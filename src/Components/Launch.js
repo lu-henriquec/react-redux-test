@@ -1,15 +1,15 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import { FluxoConsumer } from '../Context';
+import * as StepActions from '../store/actions/step';
 
-export default function Launch() {
+function Launch({ dispatch }) {
   return (
-    <FluxoConsumer>
-        {({ handleContextStep }) => (
-            <div>
-                <button onClick={() => handleContextStep(1)}>Iniciar</button>
-            </div>
-        )}
-    </FluxoConsumer>
+    <div>
+      <button onClick={() => dispatch(StepActions.handleContextStep(1))}>Iniciar</button>
+    </div>
   );
 }
+
+
+export default connect(() => ({}))(Launch);

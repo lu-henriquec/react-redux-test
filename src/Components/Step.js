@@ -1,20 +1,16 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-import { FluxoConsumer } from '../Context';
+import * as StepActions from '../store/actions/step';
 
-const Step = props => {
+const Step = ({ step, dispatch }) => {
     return (
-        <FluxoConsumer>
-            {({ handleContextStep, step }) => (
-                <div>
-                    <button onClick={() => handleContextStep(step-1)}>Prev Step</button>
-                    {step}
-                    <button onClick={() => handleContextStep(step+1)}>Next Step</button>
-                </div>
-            )}
-        </FluxoConsumer>
+      <div>
+          <button onClick={() => dispatch(StepActions.handleContextStep(step-1))}>Prev Step</button>
+          {step}
+          <button onClick={() => dispatch(StepActions.handleContextStep(step+1))}>Next Step</button>
+      </div>
     );
 };
 
-
-export default Step;
+export default connect(state => ({ step: state.step }))(Step);

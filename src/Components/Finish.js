@@ -16,13 +16,14 @@ function Finish({ dados, dispatch }) {
   );
 }
 
-const mapStateToProps = state => ({
-  dados: state.dados
-});
-
-const mapDispatchToProps = dispatch => ({
-  toggleStep: step => dispatch(StepActions.handleContextStep(step))
-});
 
 export default connect(state => ({ dados: state.dados }))(Finish);
+
+// const mapStateToProps = state => ({
+//   dados: state.dados
+// });
+
+// const mapDispatchToProps = dispatch => ({
+//   toggleStep: step => dispatch(StepActions.handleContextStep(step))
+// });
 // export default connect(mapStateToProps, mapDispatchToProps)(Finish);

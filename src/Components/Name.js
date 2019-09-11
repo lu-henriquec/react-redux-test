@@ -1,32 +1,30 @@
 import React from 'react';
 import Step from './Step';
 
-import { FluxoConsumer } from '../Context';
+import { connect } from 'react-redux';
 
-const Name = props => {
+import * as DadosActions from '../store/actions/dados';
+
+const Name = ({ dados, dispatch }) => {
     return (
-        <FluxoConsumer>
-            {({ dados, handleContextData }) => (
-                <>
-                    <div>
-                        <label htmlFor="name">Escreva o nome:</label>
-                        <input
-                            type="text"
-                            name="name"
-                            id="name"
-                            defaultValue={dados.name}
-                            onChange={(e) => handleContextData({ name: e.target.value})}
-                        />
-                    </div>
-                    <p>Nome: {dados.name}</p>
+        <>
+          <div>
+              <label htmlFor="name">Escreva o nome:</label>
+              <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  defaultValue={dados.name}
+                  onChange={(e) => dispatch(DadosActions.handleContextData({ name: e.target.value}))}
+              />
+          </div>
+          <p>Nome: {dados.name}</p>
 
 
-                    <hr/>
-                    <Step />
-                </>
-            )}
-        </FluxoConsumer>
+          <hr/>
+          <Step />
+        </>
     );
 };
 
-export default Name;
+export default connect(state => ({ dados: state.dados }))(Name);

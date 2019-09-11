@@ -4,10 +4,8 @@ import store from './store';
 
 import Child from './Components/Child';
 
-import { FluxoProvider } from './Context';
-
 export class App extends Component {
-  state = { 
+  state = {
     step: 0,
     dados: {}
   };

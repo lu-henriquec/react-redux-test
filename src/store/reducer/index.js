@@ -4,7 +4,21 @@ const INITIAL_STATE = {
 };
 
 export default function reducer(state = INITIAL_STATE, action) {
-  return state;
+  console.log(action);
+  switch (action.type) {
+    case 'HANDLESTEP':
+      return {
+        ...state,
+        step: action.step
+      };
+    case 'HANDLEDATA':
+      return {
+        ...state,
+        dados: {...state.dados, ...action.data}
+      };
+    default:
+      return state;
+  }
 }
 
 // import { combineReducers } from 'redux';
